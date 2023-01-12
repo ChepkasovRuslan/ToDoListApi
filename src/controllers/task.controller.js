@@ -12,9 +12,9 @@ const getTask = async (req, res) => {
   try {
     const task = await getTaskById(req.params.id);
 
-    res.status(200).send(task);
+    res.status(201).send(task);
   } catch (error) {
-    res.status(400).send('Failed to find task');
+    res.status(404).send('Failed to find task');
   }
 };
 
@@ -22,9 +22,9 @@ const getTasks = async (req, res) => {
   try {
     const allTasks = await getAllTasks();
 
-    res.status(200).send(allTasks);
+    res.status(201).send(allTasks);
   } catch (error) {
-    res.status(400).send('Failed to find tasks');
+    res.status(404).send('Failed to find tasks');
   }
 };
 
@@ -32,9 +32,9 @@ const createOneTask = async (req, res) => {
   try {
     const task = await createTask(req.body);
 
-    res.status(200).send(task);
+    res.status(201).send(task);
   } catch (error) {
-    res.status(400).send('Failed to add task');
+    res.status(500).send('Failed to add task');
   }
 };
 
@@ -42,9 +42,9 @@ const patchTaskText = async (req, res) => {
   try {
     const result = await updateTaskText(req.params.id, req.body.text);
 
-    res.status(200).send(result);
+    res.status(202).send(result);
   } catch (error) {
-    res.status(400).send('Failed to patch task text field');
+    res.status(500).send('Failed to patch task text field');
   }
 };
 
@@ -52,9 +52,9 @@ const patchTaskCompleted = async (req, res) => {
   try {
     const result = await updateTaskCompleted(req.params.id)
 
-    res.status(200).send(result);
+    res.status(202).send(result);
   } catch (error) {
-    res.status(400).send('Failed to patch task completed field');
+    res.status(500).send('Failed to patch task completed field');
   }
 };
 
@@ -62,9 +62,9 @@ const deleteTask = async (req, res) => {
   try {
     const result = await deleteTaskById(req.params.id);
 
-    res.status(200).send(result);
+    res.status(202).send(result);
   } catch (error) {
-    res.status(400).send('Failed to delete task');
+    res.status(404).send('Task to delete not found');
   }
 };
 
@@ -72,9 +72,9 @@ const deleteTasks = async (req, res) => {
   try {
     const result = await deleteAllTasks();
 
-    res.status(200).send(result);
+    res.status(202).send(result);
   } catch (error) {
-    res.status(400).send('Failed to delete all tasks');
+    res.status(500).send('Failed to delete all tasks');
   }
 };
 
