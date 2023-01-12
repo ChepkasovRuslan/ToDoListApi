@@ -34,7 +34,7 @@ const createOneTask = async (req, res) => {
 
     res.status(201).send(task);
   } catch (error) {
-    res.status(500).send('Failed to add task');
+    res.status(500).send(error);
   }
 };
 
@@ -44,7 +44,7 @@ const patchTaskText = async (req, res) => {
 
     res.status(202).send(result);
   } catch (error) {
-    res.status(500).send('Failed to patch task text field');
+    res.status(500).send(error);
   }
 };
 
